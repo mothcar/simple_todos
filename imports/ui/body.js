@@ -1,5 +1,7 @@
 import { Template } from 'meteor/templating';
+
 import { ReactiveDict } from 'meteor/reactive-dict';
+
 
 import { Tasks } from '../api/tasks.js';
  
@@ -12,6 +14,7 @@ Template.body.onCreated(function bodyOnCreated() {
  
 Template.body.helpers({
   tasks() {
+
   	const instance = Template.instance();
     if (instance.state.get('hideCompleted')) {
       // If hide completed is checked, filter tasks
@@ -24,6 +27,7 @@ Template.body.helpers({
   incompleteCount() {
     return Tasks.find({ checked: { $ne: true } }).count();
   },
+
 });
 
 Template.body.events({
@@ -44,7 +48,10 @@ Template.body.events({
     // Clear form
     target.text.value = '';
   },
+<<<<<<< HEAD
   'change .hide-completed input'(event, instance) {
     instance.state.set('hideCompleted', event.target.checked);
   },
+=======
+>>>>>>> test_rollback
 });
